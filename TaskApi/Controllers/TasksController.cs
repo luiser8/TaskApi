@@ -56,7 +56,7 @@ namespace TaskApi
                 {
                     using (TasksEFModel db = new TasksEFModel())
                     {
-                        Tasks tasks = await db.Tasks.Where(u => u.IdUser == user).ToListAsync();
+                        var tasks = await db.Tasks.Where(u => u.IdUser == user).ToListAsync();
                         if (tasks == null)
                         {
                             ExceptionManager.Validation(10000, "Tarea del usuario no encontrado");
@@ -163,7 +163,7 @@ namespace TaskApi
         }
 
         /// <summary>
-        /// Metodo DELETE, recibe el categoriaId, y realiza la eliminacion de forma logica, ubicando el estado actual en que
+        /// Metodo DELETE, recibe el taskid, y realiza la eliminacion de forma logica, ubicando el estado actual en que
         /// se encuentra para cambiarlo dependiendo la solicitud request
         /// </summary>
         /// <param name="id"></param>
@@ -174,7 +174,7 @@ namespace TaskApi
         /// <response code="400">Retorno de null si no hay registros</response>
         // DELETE: api/Tasks/5
         [ResponseType(typeof(Tasks))]
-        /*public async Task<IHttpActionResult> DeleteTasks(int id)
+        public async Task<IHttpActionResult> DeleteTasks(int id)
         {
             if (id != 0)
             {
@@ -208,7 +208,7 @@ namespace TaskApi
                 }
             }
             return Ok();
-        }*/
+        }
 
         protected override void Dispose(bool disposing)
         {

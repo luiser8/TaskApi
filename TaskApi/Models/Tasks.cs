@@ -11,23 +11,17 @@ namespace TaskApi.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Tasks
     {
-        [Key]
         public int IdTask { get; set; }
         public int IdUser { get; set; }
         public string Name { get; set; }
         public string Priority { get; set; }
         public string Description { get; set; }
         public System.DateTime CreateTask { get; set; }
+        public Nullable<byte> Status { get; set; }
     
         public virtual Users Users { get; set; }
-
-        public static implicit operator Tasks(List<Tasks> v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
