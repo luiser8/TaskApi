@@ -251,6 +251,7 @@ namespace TaskApi.Controllers
                                 break;
                         }
 
+                        db.Entry(users).State = EntityState.Modified;
                         await db.SaveChangesAsync();
                         return Ok(users);
                     }

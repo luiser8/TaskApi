@@ -197,7 +197,7 @@ namespace TaskApi
                                 tasks.Status = 0;
                                 break;
                         }
-
+                        db.Entry(tasks).State = EntityState.Modified;
                         await db.SaveChangesAsync();
                         return Ok(tasks);
                     }
